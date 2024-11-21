@@ -35,15 +35,14 @@ export default function Page() {
   });
 
   const onSignInPress = async (data: FormData) => {
-    console.log(data)
     if (!isLoaded) {
       return
     }
 
     try {
       const signInAttempt = await signIn.create({
-        identifier: emailAddress,
-        password,
+        identifier: data.email,
+        password: data.password,
       })
 
       if (signInAttempt.status === 'complete') {
